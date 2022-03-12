@@ -10,12 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ARCHETYPE_GROUP_ID: ""
-      ARCHETYPE_ARTIFACT_ID: ""
-      ARCHETYPE_VERSION: ""
-      GROUP_ID: ""
-      ARTIFACT_ID: ""
-      VERSION: ""
+      ARCHETYPE_GROUP_ID: "com.google.code.plsqlmaven"
+      ARCHETYPE_ARTIFACT_ID: "plsql-project-archetype"
+      ARCHETYPE_VERSION: "1.11"
+      GROUP_ID: "my.groupId"
+      ARTIFACT_ID: "test-create-archetype"
+      VERSION: "1.0.0"
     steps:
       - uses: actions/checkout@v2
 
@@ -28,12 +28,12 @@ jobs:
       - name: Generate project
         run:  |
           mvn archetype:generate -B \
-            -DarchetypeGroupId="com.google.code.plsqlmaven" \
-            -DarchetypeArtifactId="plsql-project-archetype" \
-            -DarchetypeVersion="1.11" \
-            -DgroupId="my.groupId" \
-            -DartifactId=test-create-archetype 
-            -Dversion="1.0.0" 
+            -DarchetypeGroupId=$ARCHETYPE_GROUP_ID \
+            -DarchetypeArtifactId=$ARCHETYPE_ARTIFACT_ID \
+            -DarchetypeVersion=$ARCHETYPE_VERSION \
+            -DgroupId=$GROUP_ID \
+            -DartifactId=$ARTIFACT_ID
+            -Dversion=$VERSION
 
       - name: Git Commit/Push Changes
         run: |
