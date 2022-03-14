@@ -56,3 +56,6 @@ jobs:
           git add .
           git commit -m "initial commit"
           git push origin main -f
+          git checkout test
+          git checkout develop
+          git push --all -u
