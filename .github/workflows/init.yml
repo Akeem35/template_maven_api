@@ -65,7 +65,7 @@ jobs:
           do
             echo "$i"
             curl \
-            -u akeem35:${{ secrets.PAT_TOKEN }}
+            -u akeem35:${{ secrets.PAT_TOKEN }} \
             -X PUT \
             --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
             https://api.github.com/repos/akeem35/template_maven_api/actions/secrets/$i \
