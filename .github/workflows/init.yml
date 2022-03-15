@@ -1,9 +1,7 @@
 name: Init Project
 
 on: 
-  push:
-    paths:
-      - .github/workflows/init.yml
+  workflow_dispatch:
 
 
 jobs:
@@ -59,3 +57,16 @@ jobs:
           git checkout -b test main
           git checkout -b develop main
           git push --all -u
+
+      - name: Create empty secrets for repository
+        run: |
+          declare -a env_vars=(AWS_KEY AWS_SECRET GHA_PAT IMG_S3_ACCESS_KEY IMG_S3_BUCKET IMG_S3_REGION IMG_S3_SECRET_KEY JWT_API_KEY, SECRET_KEY SPRING_DATASOURCE_PASSWORD SPRING_DATASOURCE_URL SPRING_DATASOURCE_USERNAME)
+          for i in "${env_vars[@]}"
+          do
+            echo "$i"
+            curl \
+            -X PUT \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/akeem35/template_maven_api/actions/secrets/$i \
+            -d '{"encrypted_value":""}'
+          done
