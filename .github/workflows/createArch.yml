@@ -20,5 +20,6 @@ jobs:
       - name: Generate project
         run:  |
           mv .github/workflows/archetype-catalog.xml ~/.m2/repository
-          ls -a ~/.m2/repository
+          cd ~/.m2/repository
+          ls -a
           mvn archetype:generate "-DarchetypeGroupId=my.groupId" "-DarchetypeArtifactId=my-archetype-id" "-DarchetypeVersion=1.3" "-DgroupId=my.groupID" "-DartifactId=createdArtifact" -X
