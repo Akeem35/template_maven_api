@@ -1,8 +1,8 @@
 <settings>
     <repositories>
         <repository>
-            <id>YOUR-PROJECT-NAME-mvn-repo</id>
-            <url>https://github.com/Akeem35/mavenArchetype/raw/mvn-repo/</url>
+            <id>mavenArchetype-mvn-repo</id>
+            <url>https://github.com/Akeem35/mavenArchetype/tree/mvn-repo/</url>
             <snapshots>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
