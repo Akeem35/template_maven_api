@@ -19,6 +19,7 @@ jobs:
           java-version: 11
       - name: Generate project
         run:  |
-          mv .github/workflows/archetype-catalog.xml ~/.m2/repository/archetype-catalog.xml
+          ls -a
+          mv ./.github/workflows/archetype-catalog.xml ~/.m2/repository/archetype-catalog.xml
           ls -a ~/.m2/repository
           mvn archetype:generate "-DarchetypeGroupId=my.groupId" "-DarchetypeArtifactId=my-archetype-id" "-DarchetypeVersion=1.3" "-DgroupId=my.groupID" "-DartifactId=createdArtifact" -X
